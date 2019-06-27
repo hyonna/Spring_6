@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.board.BoardDTO;
-import com.iu.board.notice.NoticeService;
+import com.iu.board.notice.NoticeServiceImpl;
 
 @Controller
 @RequestMapping("/notice/")
 public class NoticeController {
 	
 	@Inject
-	private NoticeService noticeService;
+	private NoticeServiceImpl noticeService;
 	
 	@RequestMapping(value = "noticeSelect")
 	public ModelAndView getSelect(ModelAndView mv, int num) {

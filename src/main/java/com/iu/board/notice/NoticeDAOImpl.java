@@ -15,7 +15,7 @@ import com.iu.board.BoardDTO;
 import com.iu.util.DBConnector;
 
 @Repository
-public class NoticeDAO implements BoardDAO {
+public class NoticeDAOImpl implements BoardDAO {
 	
 	@Inject
 	private DBConnector dbConnector;
@@ -35,22 +35,24 @@ public class NoticeDAO implements BoardDAO {
 		return result;
 	}
 
-	@Override
+	@Override//? extends BoardDTO : boardDTO와 boardDTO를 상속받는 것들을 담겠다. ? super NoticeDTO 와 noticeDTO의 부모 타입을 담으세요.
 	public List<BoardDTO> getList() throws Exception {
 		ArrayList<BoardDTO> ar = new ArrayList<BoardDTO>();
 		Connection con = dbConnector.getConnect();
 		String sql ="select * from (select rownum r, n.* from (select num, title, writer, reg_date, hit from notice) n) "
-				+ " order by r desc"; // where r between 1 and 10 order by r desc
+				+ " where r between ? and ? order by r desc"; // where r between ? and ? order by r desc
 		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, 1);
+		st.setInt(2, 10);
 		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
-			BoardDTO boardDTO = new BoardDTO();
-			boardDTO.setNum(rs.getInt("num"));
-			boardDTO.setTitle(rs.getString("title"));
-			boardDTO.setWriter(rs.getString("writer"));
-			boardDTO.setReg_date(rs.getDate("reg_date"));
-			boardDTO.setHit(rs.getInt("hit"));
-			ar.add(boardDTO);
+			NoticeDTO noticeDTO = new NoticeDTO();
+			noticeDTO.setNum(rs.getInt("num"));
+			noticeDTO.setTitle(rs.getString("title"));
+			noticeDTO.setWriter(rs.getString("writer"));
+			noticeDTO.setReg_date(rs.getDate("reg_date"));
+			noticeDTO.setHit(rs.getInt("hit"));
+			ar.add(noticeDTO);
 		}
 		rs.close();
 		st.close();
@@ -61,24 +63,24 @@ public class NoticeDAO implements BoardDAO {
 	@Override
 	public BoardDTO getSelect(int num) throws Exception {
 		Connection con = dbConnector.getConnect();
-		BoardDTO boardDTO = null;
+		NoticeDTO noticeDTO = null;
 		String sql = "select * from notice where num =?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);
 		ResultSet rs = st.executeQuery();
 		if(rs.next()) {
-			boardDTO = new BoardDTO();
-			boardDTO.setNum(rs.getInt("num"));
-			boardDTO.setTitle(rs.getString("title"));
-			boardDTO.setWriter(rs.getString("writer"));
-			boardDTO.setContents(rs.getString("contents"));
-			boardDTO.setReg_date(rs.getDate("reg_date"));
-			boardDTO.setHit(rs.getInt("hit"));
+			noticeDTO = new NoticeDTO();
+			noticeDTO.setNum(rs.getInt("num"));
+			noticeDTO.setTitle(rs.getString("title"));
+			noticeDTO.setWriter(rs.getString("writer"));
+			noticeDTO.setContents(rs.getString("contents"));
+			noticeDTO.setReg_date(rs.getDate("reg_date"));
+			noticeDTO.setHit(rs.getInt("hit"));
 		}
 		rs.close();
 		st.close();
 		con.close();
-		return boardDTO;
+		return noticeDTO;
 	}
 
 }

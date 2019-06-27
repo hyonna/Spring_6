@@ -15,7 +15,7 @@ import com.iu.board.BoardDTO;
 import com.iu.util.DBConnector;
 
 @Repository
-public class QnaDAO implements BoardDAO {
+public class QnaDAOImpl implements BoardDAO {
 	
 	@Inject
 	private DBConnector dbConnector;

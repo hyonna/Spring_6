@@ -10,10 +10,10 @@ import com.iu.board.BoardDTO;
 import com.iu.board.BoardService;
 
 @Service
-public class NoticeService implements BoardService {
+public class NoticeServiceImpl implements BoardService {
 	
 	@Inject
-	private NoticeDAO noticeDAO;
+	private NoticeDAOImpl noticeDAO;
 
 	@Override
 	public int setWrite(BoardDTO boardDTO) throws Exception {

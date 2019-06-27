@@ -10,10 +10,10 @@ import com.iu.board.BoardDTO;
 import com.iu.board.BoardService;
 
 @Service
-public class QnaService implements BoardService {
+public class QnaServiceImpl implements BoardService {
 
 	@Inject
-	private QnaDAO qnaDAO;
+	private QnaDAOImpl qnaDAO;
 	
 	@Override
 	public int setWrite(BoardDTO boardDTO) throws Exception {
