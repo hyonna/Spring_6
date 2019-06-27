@@ -27,6 +27,8 @@
 		</tr>
 	</table>
 	<div>
+		<a href="./${board}Update?num=${dto.num}">Update</a>
+		<a href="./${board}Delete?num=${dto.num}">Delete</a>
 		<a href="./${board}List"><button class="btn btn-default">List</button></a>
 	</div>
 </div>
