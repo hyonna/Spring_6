@@ -5,6 +5,9 @@ import java.util.List;
 import com.iu.util.PageMaker;
 
 public interface BoardDAO {
+	
+	//총 글의 갯수
+	public int getTotalCount(PageMaker pageMaker) throws Exception;
 
 	//글삭제
 	public int setDelete(int num) throws Exception;

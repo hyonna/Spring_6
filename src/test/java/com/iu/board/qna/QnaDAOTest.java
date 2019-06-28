@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import com.iu.board.BoardDTO;
 import com.iu.s6.AbstractTest;
+import com.iu.util.PageMaker;
 
 public class QnaDAOTest extends AbstractTest{
 
@@ -86,15 +87,15 @@ public class QnaDAOTest extends AbstractTest{
 	@Test
 	public void selectList() {
 		
-		List<BoardDTO> ar = null;
-		try {
-			ar = qnaDAOImpl.getList();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		assertNotEquals(0, ar.size());
+//		List<BoardDTO> ar = null;
+//		try {
+//			ar = qnaDAOImpl.getList(pageMaker);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		assertNotEquals(0, ar.size());
 		
 	}
 

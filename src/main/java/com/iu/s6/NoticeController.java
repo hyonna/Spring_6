@@ -40,11 +40,11 @@ public class NoticeController {
 		//매개변수에 모델을 사용했을 경우
 		//model.addAttribute("list", ar);
 		//return "board/boardList";
-		List<BoardDTO> ar=noticeService.getList();
-		mv.setViewName("board/boardList");
-		mv.addObject("list", ar);
-		mv.addObject("board", "notice");
-		return mv;
+//		List<BoardDTO> ar=noticeService.getList();
+//		mv.setViewName("board/boardList");
+//		mv.addObject("list", ar);
+//		mv.addObject("board", "notice");
+		return null;
 	}
 	
 	

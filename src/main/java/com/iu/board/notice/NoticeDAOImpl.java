@@ -32,6 +32,11 @@ public class NoticeDAOImpl implements BoardDAO {
 	
 
 	@Override
+	public int getTotalCount(PageMaker pageMaker) throws Exception {
+		return sqlSession.selectOne(mapper+"totalCount", pageMaker);
+	}
+
+	@Override
 	public int setDelete(int num) throws Exception {
 		int result = sqlSession.delete(mapper+"noticeDelete", num);
 		return result;
@@ -61,10 +66,6 @@ public class NoticeDAOImpl implements BoardDAO {
 		return sqlSession.selectOne(mapper+"noticeSelect", num);
 	}
 	
-	public int getTotalCount() throws Exception {
-		
-		return sqlSession.selectOne(mapper+"totalCount");
-	}
 	
 	
 	

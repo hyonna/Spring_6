@@ -45,16 +45,16 @@ public class QnaController {
 		List<BoardDTO> ar = new ArrayList<BoardDTO>();
 		
 		try {
-			ar=qnaService.getList();
+			ar=qnaService.getList(pageMaker);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		mv.addObject("list", ar);
-		mv.addObject("board", "qna");
-		mv.setViewName("/board/boardList");
-		return mv;
+//		mv.addObject("list", ar);
+//		mv.addObject("board", "qna");
+//		mv.setViewName("/board/boardList");
+		return null;
 	}
 	
 	

@@ -23,6 +23,12 @@ public class QnaDAOImpl implements BoardDAO {
 	@Inject
 	private SqlSession sqlSession;
 	private String mapper = "QnaMapper.";
+	
+	
+	@Override
+	public int getTotalCount(PageMaker pageMaker) throws Exception {
+		return sqlSession.selectOne(mapper+"totalCount", pageMaker);
+	}
 
 	@Override
 	public int setDelete(int num) throws Exception {

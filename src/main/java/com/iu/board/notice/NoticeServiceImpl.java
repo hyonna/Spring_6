@@ -37,9 +37,10 @@ public class NoticeServiceImpl implements BoardService {
 	public List<BoardDTO> getList(PageMaker pageMaker) throws Exception {
 		
 		pageMaker.makeRow();
+		int totalCount = noticeDAO.getTotalCount(pageMaker);
 		
 		//페이징 처리하는 계산
-		//int totalCount = pageMaker.makePage(totalCount);
+		pageMaker.makePage(totalCount);
 		
 		return noticeDAO.getList(pageMaker);
 	}
