@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -56,7 +58,9 @@ public class NoticeDAOImpl implements BoardDAO {
 
 	@Override
 	public BoardDTO getSelect(int num) throws Exception {
-		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startRow", 1);
+		map.put("lastRow", 10);
 		return sqlSession.selectOne(mapper+"noticeSelect", num);
 	}
 	
