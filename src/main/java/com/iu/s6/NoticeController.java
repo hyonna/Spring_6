@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.board.BoardDTO;
 import com.iu.board.notice.NoticeServiceImpl;
+import com.iu.util.PageMaker;
 
 @Controller
 @RequestMapping("/notice/")
@@ -35,7 +36,7 @@ public class NoticeController {
 	
 	//List
 	@RequestMapping(value = "noticeList", method = RequestMethod.GET)
-	public ModelAndView getList(ModelAndView mv) throws Exception {
+	public ModelAndView getList(PageMaker pageMaker) throws Exception {
 		//매개변수에 모델을 사용했을 경우
 		//model.addAttribute("list", ar);
 		//return "board/boardList";

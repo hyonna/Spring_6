@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.iu.board.BoardDTO;
 import com.iu.board.qna.QnaDTO;
 import com.iu.board.qna.QnaServiceImpl;
+import com.iu.util.PageMaker;
 
 @Controller
 @RequestMapping("/qna/")
@@ -40,7 +41,7 @@ public class QnaController {
 	
 	//List
 	@RequestMapping(value = "qnaList", method = RequestMethod.GET)
-	public ModelAndView getList(ModelAndView mv) {
+	public ModelAndView getList(PageMaker pageMaker) {
 		List<BoardDTO> ar = new ArrayList<BoardDTO>();
 		
 		try {

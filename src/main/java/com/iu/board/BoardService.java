@@ -2,6 +2,8 @@ package com.iu.board;
 
 import java.util.List;
 
+import com.iu.util.PageMaker;
+
 public interface BoardService {
 	
 	//글삭제
@@ -14,7 +16,7 @@ public interface BoardService {
 	public int setWrite(BoardDTO boardDTO) throws Exception;
 	
 	//글 리스트 가져오기
-	public List<BoardDTO> getList() throws Exception;
+	public List<BoardDTO> getList(PageMaker pageMaker) throws Exception;
 	
 	//글 하나 가져오기
 	public BoardDTO getSelect(int num) throws Exception;

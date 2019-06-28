@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.SqlSession;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,10 +45,22 @@ public class NoticeDAOTest extends AbstractTest {
 	@Test
 	public void selectList() throws Exception {
 		
-		List<BoardDTO> ar = noticeDAOImpl.getList();
-		assertNotEquals(0, ar.size());
+		//List<BoardDTO> ar = noticeDAOImpl.getList();
+		//assertNotEquals(3, ar.size());
 		
 	}
+	
+	
+	@Test
+	public void getTotalCount() throws Exception{
+		
+		
+		int result = noticeDAOImpl.getTotalCount();
+		
+		assertEquals(15, result);
+	}
+	
+	
 	
 	@Test
 	public void selectOne() throws Exception{

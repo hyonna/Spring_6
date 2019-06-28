@@ -18,6 +18,7 @@ import org.springframework.stereotype.Repository;
 import com.iu.board.BoardDAO;
 import com.iu.board.BoardDTO;
 import com.iu.util.DBConnector;
+import com.iu.util.PageMaker;
 
 @Repository
 public class NoticeDAOImpl implements BoardDAO {
@@ -51,20 +52,19 @@ public class NoticeDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardDTO> getList() throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList(mapper+"noticeList");
+	public List<BoardDTO> getList(PageMaker pageMaker) throws Exception {
+		return sqlSession.selectList(mapper+"noticeList", pageMaker);
 	}
 
 	@Override
 	public BoardDTO getSelect(int num) throws Exception {
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startRow", 1);
-		map.put("lastRow", 10);
 		return sqlSession.selectOne(mapper+"noticeSelect", num);
 	}
 	
-	
+	public int getTotalCount() throws Exception {
+		
+		return sqlSession.selectOne(mapper+"totalCount");
+	}
 	
 	
 	

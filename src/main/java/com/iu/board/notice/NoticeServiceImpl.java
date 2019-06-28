@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.iu.board.BoardDTO;
 import com.iu.board.BoardService;
+import com.iu.util.PageMaker;
 
 @Service
 public class NoticeServiceImpl implements BoardService {
@@ -33,9 +34,14 @@ public class NoticeServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardDTO> getList() throws Exception {
+	public List<BoardDTO> getList(PageMaker pageMaker) throws Exception {
 		
-		return noticeDAO.getList();
+		pageMaker.makeRow();
+		
+		//페이징 처리하는 계산
+		//int totalCount = pageMaker.makePage(totalCount);
+		
+		return noticeDAO.getList(pageMaker);
 	}
 
 	@Override

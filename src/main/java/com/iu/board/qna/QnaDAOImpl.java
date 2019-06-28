@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.iu.board.BoardDAO;
 import com.iu.board.BoardDTO;
 import com.iu.util.DBConnector;
+import com.iu.util.PageMaker;
 
 @Repository
 public class QnaDAOImpl implements BoardDAO {
@@ -41,7 +42,7 @@ public class QnaDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardDTO> getList() throws Exception {
+	public List<BoardDTO> getList(PageMaker pageMaker) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(mapper+"qnaList");
 	}

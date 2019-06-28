@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.iu.board.BoardDTO;
 import com.iu.board.BoardService;
+import com.iu.util.PageMaker;
 
 @Service
 public class QnaServiceImpl implements BoardService {
@@ -35,9 +36,10 @@ public class QnaServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardDTO> getList() throws Exception {
+	public List<BoardDTO> getList(PageMaker pageMaker) throws Exception {
+		pageMaker.makeRow();
 		
-		return qnaDAO.getList();
+		return qnaDAO.getList(pageMaker);
 	}
 
 	@Override
