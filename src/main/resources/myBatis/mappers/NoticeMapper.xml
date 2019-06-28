@@ -23,7 +23,7 @@
  		where R between #{startRow} and #{lastRow}
  	</select>
  	
- 	<select id="totalCount" resultType="java.lang.Integer">
+ 	<select id="totalCount" parameterType="com.iu.util.PageMaker" resultType="java.lang.Integer">
 		select count(num) from notice 	
  	</select>
  </mapper>
