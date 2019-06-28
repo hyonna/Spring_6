@@ -22,6 +22,7 @@ public class QnaController {
 	private QnaServiceImpl qnaService;
 	
 	
+	//select
 	@RequestMapping(value = "qnaSelect", method = RequestMethod.GET)
 	public ModelAndView getSelect(ModelAndView mv, int num) {
 		BoardDTO qnaDTO = new QnaDTO();
@@ -37,6 +38,7 @@ public class QnaController {
 		return mv;
 	}
 	
+	//List
 	@RequestMapping(value = "qnaList", method = RequestMethod.GET)
 	public ModelAndView getList(ModelAndView mv) {
 		List<BoardDTO> ar = new ArrayList<BoardDTO>();
@@ -54,6 +56,67 @@ public class QnaController {
 		return mv;
 	}
 	
+	
+	//delete
+	@RequestMapping(value = "qnaDelete", method = RequestMethod.GET)
+	public ModelAndView setDelete(ModelAndView mv, int num) {
+		int result = 0;
+		try {
+			result = qnaService.setDelete(num);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(result>0) {
+			mv.setViewName("redirect:./qnaList");
+		} else {
+			mv.setViewName("redirect:./qnaUpdate");
+		}
+		
+		return mv;
+	}
+	
+	
+	//update
+	@RequestMapping(value = "qnaUpdate", method = RequestMethod.POST)
+	public ModelAndView setUpdate2(ModelAndView mv, BoardDTO boardDTO) {
+		
+		int result = 0;
+		
+		try {
+			result = qnaService.setUpdate(boardDTO);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(result>0) {
+			mv.setViewName("redirect:./qnaList");
+		} else {
+			mv.setViewName("redirect:./qnaUpdate");
+		}
+		
+		return mv;
+		
+	}
+	
+	
+	
+	@RequestMapping(value = "qnaUpdate", method = RequestMethod.GET)
+	public ModelAndView setUpdate(ModelAndView mv, BoardDTO boardDTO) {
+		
+		mv.addObject("board", "qna");
+		mv.setViewName("/board/boardUpdate");
+		
+		return mv;
+		
+	}
+	
+	
+	
+	
+	//write
 	@RequestMapping(value = "qnaWrite", method = RequestMethod.POST)
 	public ModelAndView setWrite2(ModelAndView mv, BoardDTO boardDTO) {
 		int result=0;

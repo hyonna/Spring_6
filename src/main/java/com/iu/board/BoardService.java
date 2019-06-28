@@ -4,6 +4,12 @@ import java.util.List;
 
 public interface BoardService {
 	
+	//글삭제
+	public int setDelete(int num) throws Exception;
+		
+	//글수정
+	public int setUpdate(BoardDTO boardDTO) throws Exception;
+	
 	//글 등록
 	public int setWrite(BoardDTO boardDTO) throws Exception;
 	

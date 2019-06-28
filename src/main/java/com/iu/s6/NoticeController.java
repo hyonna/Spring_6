@@ -21,6 +21,8 @@ public class NoticeController {
 	@Inject
 	private NoticeServiceImpl noticeService;
 	
+	
+	//select
 	@RequestMapping(value = "noticeSelect", method = RequestMethod.GET)
 	public ModelAndView getSelect(ModelAndView mv, @RequestParam(defaultValue = "0", required = false)int num) throws Exception {
 		BoardDTO boardDTO=noticeService.getSelect(num);
@@ -30,6 +32,8 @@ public class NoticeController {
 		return mv;
 	}
 	
+	
+	//List
 	@RequestMapping(value = "noticeList", method = RequestMethod.GET)
 	public ModelAndView getList(ModelAndView mv) throws Exception {
 		//매개변수에 모델을 사용했을 경우
@@ -41,8 +45,42 @@ public class NoticeController {
 		mv.addObject("board", "notice");
 		return mv;
 	}
-
 	
+	
+	//delete
+	@RequestMapping(value = "noticeDelete", method = RequestMethod.GET)
+	public ModelAndView setDelete(ModelAndView mv, @RequestParam(defaultValue = "0", required = false)int num) throws Exception {
+		
+		mv.setViewName("board/boardDelete");
+		mv.addObject("board", "notice");
+		
+		return mv;
+	}
+	
+
+	//update
+	@RequestMapping(value = "noticeUpdate", method = RequestMethod.GET)
+	public ModelAndView setUpdate(ModelAndView mv) {
+		
+		mv.setViewName("board/boardUpdate");
+		mv.addObject("board", "notice");
+		
+		return mv;
+		
+	}
+	
+	@RequestMapping(value = "noticeUpdate", method = RequestMethod.POST)
+	public ModelAndView setUpdate(ModelAndView mv, BoardDTO boardDTO) throws Exception{
+		
+		int result = noticeService.setUpdate(boardDTO);
+		
+		mv.setViewName("redirect:./noticeList");
+		return mv;
+		
+	}
+	
+	
+	//write
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.GET)
 	public ModelAndView setWrite(ModelAndView mv) {
 		mv.setViewName("board/boardWrite");

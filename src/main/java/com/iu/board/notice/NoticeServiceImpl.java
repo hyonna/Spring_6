@@ -14,6 +14,17 @@ public class NoticeServiceImpl implements BoardService {
 	
 	@Inject
 	private NoticeDAOImpl noticeDAO;
+	
+
+	@Override
+	public int setDelete(int num) throws Exception {
+		return noticeDAO.setDelete(num);
+	}
+
+	@Override
+	public int setUpdate(BoardDTO boardDTO) throws Exception {
+		return noticeDAO.setUpdate(boardDTO);
+	}
 
 	@Override
 	public int setWrite(BoardDTO boardDTO) throws Exception {

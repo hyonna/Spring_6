@@ -15,6 +15,20 @@ public class QnaServiceImpl implements BoardService {
 	@Inject
 	private QnaDAOImpl qnaDAO;
 	
+	
+	
+	@Override
+	public int setDelete(int num) throws Exception {
+		
+		return qnaDAO.setDelete(num);
+	}
+
+	@Override
+	public int setUpdate(BoardDTO boardDTO) throws Exception {
+
+		return qnaDAO.setUpdate(boardDTO);
+	}
+
 	@Override
 	public int setWrite(BoardDTO boardDTO) throws Exception {
 		return qnaDAO.setWrite(boardDTO);
