@@ -2,6 +2,10 @@ package com.iu.board;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import com.iu.util.PageMaker;
 
 public interface BoardService {
@@ -13,7 +17,7 @@ public interface BoardService {
 	public int setUpdate(BoardDTO boardDTO) throws Exception;
 	
 	//글 등록
-	public int setWrite(BoardDTO boardDTO) throws Exception;
+	public int setWrite(BoardDTO boardDTO, List<MultipartFile> multipartFiles, HttpSession session) throws Exception;
 	
 	//글 리스트 가져오기
 	public List<BoardDTO> getList(PageMaker pageMaker) throws Exception;

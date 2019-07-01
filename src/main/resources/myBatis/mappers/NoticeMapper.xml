@@ -19,11 +19,50 @@
  	<select id="noticeList" resultType="com.iu.board.notice.NoticeDTO" parameterType="com.iu.util.PageMaker">
  		select * from
  		(select rownum R, N.* from
- 		(select * from notice order by num desc) N)
+ 		(select * from notice where
+ 		<choose>
+			<when test="kind == 1">
+				title
+			</when>
+			<when test="kind == 2">
+				writer
+			</when>
+			<otherwise>
+				contents
+			</otherwise>
+		</choose>
+			like '%'||#{search}||'%' order by num desc) N)
  		where R between #{startRow} and #{lastRow}
  	</select>
  	
  	<select id="totalCount" parameterType="com.iu.util.PageMaker" resultType="java.lang.Integer">
-		select count(num) from notice 	
+		<!-- kind : 1(title), 2(writer), 3(contents) -->
+		select count(num) from notice where
+		
+		<choose>
+			<when test="kind == 1">
+				title
+			</when>
+			<when test="kind == 2">
+				writer
+			</when>
+			<otherwise>
+				contents
+			</otherwise>
+		</choose>
+			like '%'||#{search}||'%'
+		
+		<!-- <if test="title == 1">
+			where title like '%'||#{search}||'%'
+		</if>
+		<if test="title == 2">
+			where writer like '%'||#{search}||'%'
+		</if>
+		<if test="title == 3">
+			where contents like '%'||#{search}||'%'
+		</if> -->
+		
+		
+		
  	</select>
  </mapper>

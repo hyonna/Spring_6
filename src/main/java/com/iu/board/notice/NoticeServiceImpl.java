@@ -3,8 +3,10 @@ package com.iu.board.notice;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.board.BoardDTO;
 import com.iu.board.BoardService;
@@ -28,7 +30,9 @@ public class NoticeServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int setWrite(BoardDTO boardDTO) throws Exception {
+	public int setWrite(BoardDTO boardDTO, List<MultipartFile> multipartFiles, HttpSession session) throws Exception {
+		
+		
 		
 		return noticeDAO.setWrite(boardDTO);
 	}

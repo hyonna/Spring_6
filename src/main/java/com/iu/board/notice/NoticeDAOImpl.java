@@ -27,43 +27,42 @@ public class NoticeDAOImpl implements BoardDAO {
 	
 	@Inject
 	private SqlSession sqlSession;
-	private String mapper = "NoticeMapper.";
+	private static final String NAMESPACE = "NoticeMapper.";
 	
 	
 
 	@Override
 	public int getTotalCount(PageMaker pageMaker) throws Exception {
-		return sqlSession.selectOne(mapper+"totalCount", pageMaker);
+		return sqlSession.selectOne(NAMESPACE+"totalCount", pageMaker);
 	}
 
 	@Override
 	public int setDelete(int num) throws Exception {
-		int result = sqlSession.delete(mapper+"noticeDelete", num);
+		int result = sqlSession.delete(NAMESPACE+"noticeDelete", num);
 		return result;
 	}
 
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
-		int result = sqlSession.update(mapper+"noticeUpdate", boardDTO);
-		
+		int result = sqlSession.update(NAMESPACE+"noticeUpdate", boardDTO);
 		return result;
 	}
 
 	@Override
 	public int setWrite(BoardDTO boardDTO) throws Exception {
-		int result = sqlSession.insert(mapper+"noticeWrite", boardDTO);
+		int result = sqlSession.insert(NAMESPACE+"noticeWrite", boardDTO);
 										//mapper + "id" 	//파라미터로 넘길값
 		return result;
 	}
 
 	@Override
 	public List<BoardDTO> getList(PageMaker pageMaker) throws Exception {
-		return sqlSession.selectList(mapper+"noticeList", pageMaker);
+		return sqlSession.selectList(NAMESPACE+"noticeList", pageMaker);
 	}
 
 	@Override
 	public BoardDTO getSelect(int num) throws Exception {
-		return sqlSession.selectOne(mapper+"noticeSelect", num);
+		return sqlSession.selectOne(NAMESPACE+"noticeSelect", num);
 	}
 	
 	

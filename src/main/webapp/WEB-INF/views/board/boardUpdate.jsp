@@ -13,27 +13,28 @@
 </head>
 <body>
 	<div class="container">
-	<h1>${board}Write</h1>
+	<h1>${board}Update</h1>
 	<br>
-	<form action="./${board}Write" method="post" enctype="multipart/form-data">
+	<form action="./${board}Update" method="post">
+		<input type="hidden" name="num" value="${dto.num}">
 		<div class="form-group">
 		  <label for="title">Title:</label>
- 		 <input class="form-control" type="text" id="title" name="title">
+ 		 <input class="form-control" type="text" id="title" name="title" value="${dto.title}">
 		</div>
 		<div class="form-group">
 		  <label for="writer">Writer:</label>
- 		 <input class="form-control" type="text" id="writer" name="writer">
+ 		 <input class="form-control" type="text" id="writer" name="writer" value="${dto.writer}">
 		</div>
 		<div class="form-group">
 		  <label for="contents">Contents:</label>
- 		 <textarea class="form-control" rows="5" id="contents" name="contents"></textarea>
+ 		 <textarea class="form-control" rows="5" id="contents" name="contents">${dto.contents}</textarea>
 		</div>
 		<div class="form-group">
 			<input type="file" name="f1">
 			<input type="file" name="f1">
 		</div>
 		<div>
-			<button class="btn btn-primary">Write</button>
+			<button class="btn btn-primary">Update</button>
 		</div>
 	</form>
 </div>

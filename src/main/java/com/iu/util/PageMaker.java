@@ -44,6 +44,11 @@ public class PageMaker {
 	
 	
 	public Integer getCurPage() {
+		
+		if(curPage==null) {
+			this.curPage = 1;
+		}
+		
 		return curPage;
 	}
 	public void setCurPage(Integer curPage) {
@@ -59,6 +64,10 @@ public class PageMaker {
 		this.kind = kind;
 	}
 	public String getSearch() {
+		
+		if(this.search==null) {
+			this.search="";
+		}
 		return search;
 	}
 	public void setSearch(String search) {
@@ -69,7 +78,7 @@ public class PageMaker {
 	//startRow, lastRow 계산
 	public void makeRow() {
 		
-		this.startRow = (this.curPage-1)*this.perPage+1;
+		this.startRow = (this.getCurPage()-1)*this.perPage+1;
 		this.lastRow = this.curPage*this.perPage;
 		
 	}

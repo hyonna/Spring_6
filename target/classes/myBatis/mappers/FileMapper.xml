@@ -2,24 +2,24 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="NoticeMapper">
- 	<insert id="noticeWrite" parameterType="com.iu.board.BoardDTO">
- 		insert into notice values(notice_seq.nextval, #{title}, #{writer}, #{contents}, sysdate, 0)
+ <mapper namespace="FileMapper">
+ 	<insert id="fileWrite" parameterType="com.iu.file.FileDTO">
+ 		insert into files values(notice_seq.nextval, #{num}, #{fname}, #{oname})
  	</insert>
- 	<delete id="noticeDelete" parameterType="java.lang.Integer">
- 		delete notice where num=#{num}
+ 	<delete id="fileDelete" parameterType="java.lang.Integer">
+ 		delete files where num=#{num}
  	</delete>
- 	<update id="noticeUpdate" parameterType="com.iu.board.notice.NoticeDTO">
- 		update notice set title=#{title}, writer=#{writer}, contents=#{contents} where num=#{num}
+ 	<update id="fileUpdate" parameterType="com.iu.file.FileDTO">
+ 		update notice set fname=#{fname}, oname=#{oname} where num=#{num}
  	</update>
- 	<select id="noticeSelect" parameterType="java.lang.Integer" resultType="com.iu.board.notice.NoticeDTO">
- 		select num, title, writer, contents, reg_date, hit from notice where num=#{num}
+ 	<select id="fileSelect" parameterType="java.lang.Integer" resultType="com.iu.file.FileDTO">
+ 		select fnum, num, fname, oname from files where num=#{num}
  	</select>
  	
- 	<select id="noticeList" resultType="com.iu.board.notice.NoticeDTO" parameterType="com.iu.util.PageMaker">
+ 	<select id="fileList" resultType="com.iu.board.notice.NoticeDTO" parameterType="com.iu.util.PageMaker">
  		select * from
  		(select rownum R, N.* from
- 		(select * from notice where
+ 		(select * from files where
  		<choose>
 			<when test="kind == 1">
 				title
@@ -37,7 +37,7 @@
  	
  	<select id="totalCount" parameterType="com.iu.util.PageMaker" resultType="java.lang.Integer">
 		<!-- kind : 1(title), 2(writer), 3(contents) -->
-		select count(num) from notice where
+		select count(num) from files where
 		
 		<choose>
 			<when test="kind == 1">

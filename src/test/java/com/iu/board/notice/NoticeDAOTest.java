@@ -15,6 +15,7 @@ import org.junit.Test;
 
 import com.iu.board.BoardDTO;
 import com.iu.s6.AbstractTest;
+import com.iu.util.PageMaker;
 
 
 public class NoticeDAOTest extends AbstractTest {
@@ -39,19 +40,20 @@ public class NoticeDAOTest extends AbstractTest {
 	public static void t4() {}
 	
 	
-	@Test 
+	
+	//@Test 
 	public void test2() {}
 	
-	@Test
+	//@Test
 	public void selectList() throws Exception {
 		
-		//List<BoardDTO> ar = noticeDAOImpl.getList();
-		//assertNotEquals(3, ar.size());
+		//List<BoardDTO> ar = noticeDAOImpl.getList(pageMaker);
+		//assertNotEquals(15, ar.size());
 		
 	}
 	
 	
-	@Test
+	//@Test
 	public void getTotalCount() throws Exception{
 		
 		
@@ -62,7 +64,7 @@ public class NoticeDAOTest extends AbstractTest {
 	
 	
 	
-	@Test
+	//@Test
 	public void selectOne() throws Exception{
 		
 		BoardDTO boardDTO = noticeDAOImpl.getSelect(4);
@@ -71,7 +73,20 @@ public class NoticeDAOTest extends AbstractTest {
 		assertNotNull(boardDTO);
 	}
 	
-	@Test
+	
+	//@Test
+	public void getCount() throws Exception {
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setKind("1");
+		pageMaker.setSearch("h");
+		int result = noticeDAOImpl.getTotalCount(pageMaker);
+		
+		assertEquals(15, result);
+		
+	}
+	
+	//@Test
 	public void test() throws Exception {
 //		BoardDTO boardDTO=noticeDAOImpl.getSelect(12);
 //		int result =  noticeDAOImpl.setDelete(3);
