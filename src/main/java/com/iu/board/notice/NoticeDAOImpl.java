@@ -29,7 +29,10 @@ public class NoticeDAOImpl implements BoardDAO {
 	private SqlSession sqlSession;
 	private static final String NAMESPACE = "NoticeMapper.";
 	
-	
+	public int getNum() throws Exception {
+		
+		return sqlSession.selectOne(NAMESPACE+"getNum");
+	}
 
 	@Override
 	public int getTotalCount(PageMaker pageMaker) throws Exception {

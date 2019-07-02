@@ -40,6 +40,11 @@ public class NoticeDAOTest extends AbstractTest {
 	public static void t4() {}
 	
 	
+	@Test
+	public void getNum() throws Exception {
+		int num = noticeDAOImpl.getNum();
+		assertNotEquals(0, num);
+	}
 	
 	//@Test 
 	public void test2() {}

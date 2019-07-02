@@ -5,25 +5,27 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class FileDAO {
 	
 	@Inject
 	private SqlSession sqlSession;
 	private static final String NAMESPACE = "FileMapper.";
 	
-	public List<FileDTO> getList(List<FileDTO> files) throws Exception {
+	public List<FileDTO> getList(int num) throws Exception {
 		
-		return sqlSession.selectList(NAMESPACE+"fileList", files);
+		return sqlSession.selectList(NAMESPACE+"fileList", num);
 	}
 
-	public FileDTO getSelect(int num) throws Exception {
+	public FileDTO getSelect(int fnum) throws Exception {
 		
-		return sqlSession.selectOne(NAMESPACE+"fileSelect", num);
+		return sqlSession.selectOne(NAMESPACE+"fileSelect", fnum);
 	}
 	
-	public int setDelete(int num) throws Exception {
-		int result = sqlSession.delete(NAMESPACE+"fileDelete", num);
+	public int setDelete(int fnum) throws Exception {
+		int result = sqlSession.delete(NAMESPACE+"fileDelete", fnum);
 		
 		return result;
 	}

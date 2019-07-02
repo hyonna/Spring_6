@@ -28,7 +28,7 @@
 			<property name="mapperLocations" value="classpath:/myBatis/mappers/**/*Mapper.xml" />
 		</bean>
 		
-		<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
+		<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession" scope="prototype">
 			<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean" />
 		</bean>
 		
@@ -40,5 +40,12 @@
 			<!-- 전체 파일 총 사이즈 -->
 			<property name="maxUploadSize" value="104857600" />
 		</bean>
+		
+		
+		<!-- 파일 저장 -->
+		<bean class="com.iu.util.FileSaver" />
+		
+		<!-- <bean class="com.iu.member.MemberDAO" id="memberDAO"></bean> -->
+		<!-- <bean class="com.iu.member.MemberService" id="memberService"></bean> -->
 		
 </beans>

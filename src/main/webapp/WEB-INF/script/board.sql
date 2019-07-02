@@ -10,7 +10,7 @@ create table files(
 
 commit
 
-select * from files
+select * from notice
 
 
 create table notice(
@@ -30,6 +30,47 @@ nomaxvalue
 nocache
 nocycle;
 
+
+create sequence memberfile_seq
+start with 1
+increment by 1
+nomaxvalue
+nocache
+nocycle;
+
+
+create table member(
+
+	id varchar2(400),
+	pw varchar2(400) not null,
+	name varchar2(400) not null,
+	email varchar2(400) not null,
+	grade number(8) default 3,
+	constraint member_id_pk primary key(id)
+	
+
+);
+
+drop table member;
+
+delete member where id='id';
+
+create table memberFile(
+
+	num number(8),
+	id varchar2(400),
+	fname varchar2(2000),
+	oname varchar2(2000),
+	constraint memberFile_num_pk primary key(num),
+	constraint memberFile_id_fk foreign key(id) references member(id) on delete cascade
+);
+
+select * from member
+select * from memberFile;
+select * from memberFile where id='id';
+
+
+commit
 
 
 create table notice(
