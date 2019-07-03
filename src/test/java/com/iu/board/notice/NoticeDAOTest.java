@@ -47,8 +47,8 @@ public class NoticeDAOTest extends AbstractTest {
 	//@Test
 	public void selectList() throws Exception {
 		
-		//List<BoardDTO> ar = noticeDAOImpl.getList(pageMaker);
-		//assertNotEquals(15, ar.size());
+//		List<BoardDTO> ar = noticeDAOImpl.getList(pageMaker);
+//		assertNotEquals(15, ar.size());
 		
 	}
 	
@@ -92,7 +92,6 @@ public class NoticeDAOTest extends AbstractTest {
 //		int result =  noticeDAOImpl.setDelete(3);
 		
 		
-		  NoticeDTO boardDTO = new NoticeDTO(); 
 		  boardDTO.setTitle("aaa");
 		  boardDTO.setWriter("ccccc"); 
 		  boardDTO.setContents("abab");
