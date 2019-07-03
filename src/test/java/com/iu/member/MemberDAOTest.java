@@ -15,6 +15,18 @@ public class MemberDAOTest  extends AbstractTest{
 	private MemberDAO memberDAO;
 	
 	@Test
+	public void loginTest() throws Exception {
+		
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId("iu");
+		memberDTO.setPw("iu");
+		memberDTO = memberDAO.getSelect(memberDTO);
+		System.out.println(memberDTO.getEmail());
+		System.out.println(memberDTO.getMemberFileDTO().getFname());
+		
+	}
+	
+	//@Test
 	public void write() throws Exception {
 		
 		MemberDTO memberDTO = new MemberDTO();

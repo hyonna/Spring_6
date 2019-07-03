@@ -40,11 +40,6 @@ public class NoticeDAOTest extends AbstractTest {
 	public static void t4() {}
 	
 	
-	@Test
-	public void getNum() throws Exception {
-		int num = noticeDAOImpl.getNum();
-		assertNotEquals(0, num);
-	}
 	
 	//@Test 
 	public void test2() {}
@@ -91,18 +86,20 @@ public class NoticeDAOTest extends AbstractTest {
 		
 	}
 	
-	//@Test
+	@Test
 	public void test() throws Exception {
 //		BoardDTO boardDTO=noticeDAOImpl.getSelect(12);
 //		int result =  noticeDAOImpl.setDelete(3);
 		
-		/*
-		 * NoticeDTO boardDTO = new NoticeDTO(); boardDTO.setTitle("aaa");
-		 * boardDTO.setWriter("ccccc"); boardDTO.setContents("abab");
-		 * boardDTO.setNum(3); int result = noticeDAOImpl.setUpdate(boardDTO);
-		 * 
-		 * assertNotNull(result);
-		 */
+		
+		  NoticeDTO boardDTO = new NoticeDTO(); 
+		  boardDTO.setTitle("aaa");
+		  boardDTO.setWriter("ccccc"); 
+		  boardDTO.setContents("abab");
+		  int result = noticeDAOImpl.setWrite(boardDTO);
+		  
+		  assertEquals(1, result);
+		 
 	}
 
 }

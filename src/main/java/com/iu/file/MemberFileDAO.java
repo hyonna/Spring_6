@@ -5,6 +5,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.iu.member.MemberDTO;
+
 @Repository
 public class MemberFileDAO {
 	
@@ -26,9 +28,9 @@ public class MemberFileDAO {
 	}
 	
 	
-	public MemberFileDTO getSelect(String id) throws Exception {
+	public MemberFileDTO getSelect(MemberDTO memberDTO) throws Exception {
 		
-		return sqlSession.selectOne(NAMESPACE+"getSelect", id);
+		return sqlSession.selectOne(NAMESPACE+"getSelect", memberDTO);
 	}
 
 }

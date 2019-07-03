@@ -25,6 +25,11 @@
 		<tr>
 			<td colspan="5">${dto.contents}</td>
 		</tr>
+		<c:forEach items="${dto.files}" var="file">
+		<tr>
+			<td><a href="../resources/upload/${file.fname}">${file.oname}</a></td>	
+		</tr>
+		</c:forEach>
 	</table>
 	<div style="float: right;">
 		<a href="./${board}Update?num=${dto.num}"><button class="btn btn-primary">Update</button></a>

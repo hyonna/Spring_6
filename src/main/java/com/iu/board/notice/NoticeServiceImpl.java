@@ -44,9 +44,8 @@ public class NoticeServiceImpl implements BoardService {
 		//notice 테이블에 저장
 		//num을 받아와서
 		//files 테이블에 저장
+		int result = noticeDAO.setWrite(boardDTO);
 		
-		int num = noticeDAO.getNum();
-		boardDTO.setNum(num);
 		ArrayList<FileDTO> files = new ArrayList<FileDTO>();
 		
 		String path = session.getServletContext().getRealPath("/resources/upload");
@@ -61,21 +60,16 @@ public class NoticeServiceImpl implements BoardService {
 			
 			String fname = fileSaver.saveFile3(path, multipartFile);
 			FileDTO fileDTO = new FileDTO();
-			fileDTO.setNum(num);
+			fileDTO.setNum(boardDTO.getNum());
 			fileDTO.setFname(fname);
 			fileDTO.setOname(multipartFile.getOriginalFilename());
 			//fileDAO.setWrite(fileDTO);
 			files.add(fileDTO);
 		}
 		
-		for (FileDTO fileDTO : files) {
-			
-			fileDAO.setWrite(fileDTO);
-		}
+		fileDAO.setWrite(files);
 		
-		
-		
-		return noticeDAO.setWrite(boardDTO);
+		return result;
 	}
 
 	@Override

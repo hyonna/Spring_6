@@ -37,9 +37,9 @@ public class FileDAO {
 		return result;
 	}
 	
-	public int setWrite(FileDTO fileDTO) throws Exception {
+	public int setWrite(List<FileDTO> files) throws Exception {
 		
-		int result = sqlSession.insert(NAMESPACE+"fileWrite", fileDTO);
+		int result = sqlSession.insert(NAMESPACE+"fileWrite", files);
 		
 		return result;
 	}

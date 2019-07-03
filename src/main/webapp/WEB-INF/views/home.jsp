@@ -15,6 +15,7 @@
 
 <c:choose>
 	<c:when test="${not empty member}">
+		<a href="./member/memberPage">My Page</a>
 		<a href="./member/memberLogout">Member Logout</a>
 	</c:when>
 	<c:otherwise>

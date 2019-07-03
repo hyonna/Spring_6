@@ -3,8 +3,10 @@ package com.iu.board.qna;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.board.BoardDTO;
 import com.iu.board.BoardService;
@@ -30,10 +32,18 @@ public class QnaServiceImpl implements BoardService {
 		return qnaDAO.setUpdate(boardDTO);
 	}
 
+	
 	@Override
-	public int setWrite(BoardDTO boardDTO) throws Exception {
-		return qnaDAO.setWrite(boardDTO);
+	public int setWrite(BoardDTO boardDTO, List<MultipartFile> multipartFiles, HttpSession session) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
+	
+	public int setWrite(BoardDTO boardDTO) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 	@Override
 	public List<BoardDTO> getList(PageMaker pageMaker) throws Exception {

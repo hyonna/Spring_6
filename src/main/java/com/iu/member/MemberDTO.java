@@ -1,5 +1,7 @@
 package com.iu.member;
 
+import com.iu.file.MemberFileDTO;
+
 public class MemberDTO {
 	
 	private String id;
@@ -7,7 +9,16 @@ public class MemberDTO {
 	private String name;
 	private String email;
 	private int grade;
+	private MemberFileDTO memberFileDTO;
 	
+	
+	
+	public MemberFileDTO getMemberFileDTO() {
+		return memberFileDTO;
+	}
+	public void setMemberFileDTO(MemberFileDTO memberFileDTO) {
+		this.memberFileDTO = memberFileDTO;
+	}
 	public String getId() {
 		return id;
 	}

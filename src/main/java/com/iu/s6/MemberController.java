@@ -1,5 +1,7 @@
 package com.iu.s6;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.iu.file.MemberFileDTO;
 import com.iu.member.MemberDTO;
 import com.iu.member.MemberService;
 
@@ -18,6 +21,18 @@ public class MemberController {
 	
 	@Inject
 	private MemberService memberService;
+	
+	@RequestMapping(value = "memberPage", method = RequestMethod.GET)
+	public ModelAndView myPage(ModelAndView mv, HttpSession session) throws Exception {
+		
+		session.getAttribute("member");
+		
+		mv.addObject(session);
+		mv.setViewName("member/memberPage");
+		
+		return mv;
+		
+	}
 	
 	@RequestMapping(value = "memberLogout", method = RequestMethod.GET)
 	public String logout(HttpSession session) throws Exception {
@@ -32,7 +47,7 @@ public class MemberController {
 	public void getSelect() throws Exception {}
 	
 	@RequestMapping(value = "memberLogin", method = RequestMethod.POST)
-	public ModelAndView getSelect(MemberDTO memberDTO, HttpSession session) throws Exception {
+	public ModelAndView getSelect(MemberDTO memberDTO, MemberFileDTO memberFileDTO, HttpSession session) throws Exception {
 		
 		memberDTO = memberService.getSelect(memberDTO);
 		String message = "Login Fail";

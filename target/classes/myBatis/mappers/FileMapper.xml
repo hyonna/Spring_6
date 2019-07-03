@@ -3,8 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="FileMapper">
- 	<insert id="fileWrite" parameterType="com.iu.file.FileDTO">
- 		insert into files values(notice_seq.nextval, #{num}, #{fname}, #{oname})
+ 	<insert id="fileWrite" parameterType="java.util.List">
+ 		insert into files values
+ 		<foreach item="item" collection="list">
+ 		(notice_seq.nextval, #{item.num}, #{item.fname}, #{item.oname})
+ 		</foreach>
+ 		
  	</insert>
  	<delete id="fileDelete" parameterType="java.lang.Integer">
  		delete files where fnum=#{fnum}

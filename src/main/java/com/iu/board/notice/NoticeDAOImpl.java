@@ -29,10 +29,6 @@ public class NoticeDAOImpl implements BoardDAO {
 	private SqlSession sqlSession;
 	private static final String NAMESPACE = "NoticeMapper.";
 	
-	public int getNum() throws Exception {
-		
-		return sqlSession.selectOne(NAMESPACE+"getNum");
-	}
 
 	@Override
 	public int getTotalCount(PageMaker pageMaker) throws Exception {
@@ -53,8 +49,14 @@ public class NoticeDAOImpl implements BoardDAO {
 
 	@Override
 	public int setWrite(BoardDTO boardDTO) throws Exception {
+		
+//		HashMap<String, Object> map = new HashMap<String, Object>();
+//		map.put("boardDTO", boardDTO);
+//		map.put("pnum", 0);
+		
 		int result = sqlSession.insert(NAMESPACE+"noticeWrite", boardDTO);
 										//mapper + "id" 	//파라미터로 넘길값
+		System.out.println(boardDTO.getNum());
 		return result;
 	}
 

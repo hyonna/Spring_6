@@ -1,3 +1,16 @@
+
+select * from
+member M join
+memberFile F using(id)
+where id='iu' and pw='iu';
+
+
+select M.*, F.* 
+from member M 
+inner join memberFile F 
+on(M.id=F.id) 
+where id=#{id} and pw=#{pw}
+
 create table files(
 
 	fnum number(8) constraint files_fnum_pk primary key,
@@ -65,9 +78,15 @@ create table memberFile(
 	constraint memberFile_id_fk foreign key(id) references member(id) on delete cascade
 );
 
-select * from member
-select * from memberFile;
+select * from notice
+select * from files;
 select * from memberFile where id='id';
+
+select * from
+notice N join
+files F using(num)
+where num=40;
+
 
 
 commit
