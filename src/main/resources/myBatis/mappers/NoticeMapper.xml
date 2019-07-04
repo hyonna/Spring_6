@@ -39,7 +39,7 @@
  	</resultMap>
  
  	<select id="noticeSelect" resultMap="notice" parameterType="java.lang.Integer">
- 		select * from notice N join files F using(num) where num=#{num}
+ 		select * from notice N full join files F using(num) where num=#{num}
  	</select>
  	
  	<select id="noticeList" resultType="com.iu.board.notice.NoticeDTO" parameterType="com.iu.util.PageMaker">

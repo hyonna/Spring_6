@@ -21,6 +21,27 @@ create table files(
 );
 
 
+update /*+ bypass_ujvc */
+qna Q, files F join set 
+Q.title='title', Q.writer='writer', Q.contents='contents',
+F.fname='aaa.png', F.oname='aaa.png'
+where num=55;
+
+
+update (
+	select Q.title,
+	Q.writer,
+	Q.contents,
+	F.fname
+	from qna Q join files F
+	on (Q.num=F.num) where Q.num=55
+)
+set Q.title='title', Q.writer='writer', 
+Q.contents='contents', F.fname='aaa'
+
+
+select * from files
+
 commit
 
 select * from notice
@@ -80,13 +101,31 @@ create table memberFile(
 
 select * from notice
 select * from files;
+select * from qna;
 select * from memberFile where id='id';
+select qna_seq.nextval from dual
 
 select * from
-notice N join
+notice N full join
 files F using(num)
-where num=40;
+where num=36;
 
+select * from
+qna Q full join
+files F using(num)
+where num=15;
+
+update(
+
+	select Q.num from
+	qna Q, files F
+	where Q.title='title'
+	and Q.writer='writer'
+	and Q.contents='contents'
+	and F.fname='2.jpg'
+	and F.oname='2.jpg'
+)
+set num=55;
 
 
 commit

@@ -7,6 +7,7 @@
   	<typeAliases>
   		<typeAlias type="com.iu.board.notice.NoticeDTO" alias="NoticeDTO"/>
   		<typeAlias type="com.iu.member.MemberDTO" alias="MemberDTO"/>
+  		<typeAlias type="com.iu.file.FileDTO" alias="FileDTO"/>
   		<typeAlias type="java.lang.Integer" alias="Integer"/>
   	</typeAliases>
   </configuration>
